@@ -8,17 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		DB44A3832C3866A60041F5F5 /* CaptureSymbolApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3822C3866A60041F5F5 /* CaptureSymbolApp.swift */; };
-		DB44A3852C3866A60041F5F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3842C3866A60041F5F5 /* ContentView.swift */; };
 		DB44A3872C3866A70041F5F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB44A3862C3866A70041F5F5 /* Assets.xcassets */; };
 		DB44A38A2C3866A70041F5F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB44A3892C3866A70041F5F5 /* Preview Assets.xcassets */; };
+		DB44A3A32C3868880041F5F5 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3A22C3868880041F5F5 /* WebView.swift */; };
+		DB44A3AB2C38692A0041F5F5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3AA2C38692A0041F5F5 /* ToastView.swift */; };
+		DB44A3AF2C3869560041F5F5 /* WebViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3AE2C3869560041F5F5 /* WebViewError.swift */; };
+		DB44A3B32C3869910041F5F5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B22C3869910041F5F5 /* HomeView.swift */; };
+		DB44A3B52C3869C30041F5F5 /* ScanSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B42C3869C30041F5F5 /* ScanSheetView.swift */; };
+		DB44A3B72C3869D10041F5F5 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B62C3869D10041F5F5 /* AuthorizationView.swift */; };
+		DB44A3B92C3869E10041F5F5 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B82C3869E10041F5F5 /* ScanController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DB44A37F2C3866A60041F5F5 /* CaptureSymbol.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaptureSymbol.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB44A3822C3866A60041F5F5 /* CaptureSymbolApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSymbolApp.swift; sourceTree = "<group>"; };
-		DB44A3842C3866A60041F5F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DB44A3862C3866A70041F5F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB44A3892C3866A70041F5F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DB44A3A22C3868880041F5F5 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		DB44A3AA2C38692A0041F5F5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		DB44A3AE2C3869560041F5F5 /* WebViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewError.swift; sourceTree = "<group>"; };
+		DB44A3B22C3869910041F5F5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DB44A3B42C3869C30041F5F5 /* ScanSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSheetView.swift; sourceTree = "<group>"; };
+		DB44A3B62C3869D10041F5F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		DB44A3B82C3869E10041F5F5 /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				DB44A3822C3866A60041F5F5 /* CaptureSymbolApp.swift */,
-				DB44A3842C3866A60041F5F5 /* ContentView.swift */,
+				DB44A3922C3866DC0041F5F5 /* Model */,
+				DB44A3912C3866D70041F5F5 /* View */,
+				DB44A3902C3866C00041F5F5 /* Controller */,
 				DB44A3862C3866A70041F5F5 /* Assets.xcassets */,
 				DB44A3882C3866A70041F5F5 /* Preview Content */,
 			);
@@ -65,6 +79,34 @@
 				DB44A3892C3866A70041F5F5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DB44A3902C3866C00041F5F5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DB44A3B82C3869E10041F5F5 /* ScanController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DB44A3912C3866D70041F5F5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DB44A3B22C3869910041F5F5 /* HomeView.swift */,
+				DB44A3B42C3869C30041F5F5 /* ScanSheetView.swift */,
+				DB44A3B62C3869D10041F5F5 /* AuthorizationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DB44A3922C3866DC0041F5F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DB44A3A22C3868880041F5F5 /* WebView.swift */,
+				DB44A3AA2C38692A0041F5F5 /* ToastView.swift */,
+				DB44A3AE2C3869560041F5F5 /* WebViewError.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +179,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB44A3852C3866A60041F5F5 /* ContentView.swift in Sources */,
+				DB44A3B52C3869C30041F5F5 /* ScanSheetView.swift in Sources */,
+				DB44A3B92C3869E10041F5F5 /* ScanController.swift in Sources */,
+				DB44A3B32C3869910041F5F5 /* HomeView.swift in Sources */,
+				DB44A3AB2C38692A0041F5F5 /* ToastView.swift in Sources */,
+				DB44A3AF2C3869560041F5F5 /* WebViewError.swift in Sources */,
 				DB44A3832C3866A60041F5F5 /* CaptureSymbolApp.swift in Sources */,
+				DB44A3B72C3869D10041F5F5 /* AuthorizationView.swift in Sources */,
+				DB44A3A32C3868880041F5F5 /* WebView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +323,7 @@
 				DEVELOPMENT_TEAM = 3U8WFAVDSF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to Check Text or QR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +353,7 @@
 				DEVELOPMENT_TEAM = 3U8WFAVDSF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Need to Check Text or QR";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
