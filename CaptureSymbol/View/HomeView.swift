@@ -6,66 +6,82 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct HomeView: View {
     @StateObject var scanProvider = ScanProvider()
     @State private var showToast = false
     @State private var showWebView = false
     @State private var webViewURL: URL?
-    @State private var webViewError: WebViewError?
-    @State private var isWebLoading = false
+    @State private var isURLValid = true
+    @State private var cameraAccessGranted = false
     
     var body: some View {
-        ZStack {
-            if !scanProvider.showSheet && !showWebView {
-                ScanController(scanProvider: scanProvider)
-            } else {
-                ScanController(scanProvider: scanProvider)
-                    .blur(radius: 10, opaque: true)
-            }
-        }
+        Group {
+            if cameraAccessGranted {
+                ZStack {
+                    if !scanProvider.showSheet && !showWebView {
+                        ScanController(scanProvider: scanProvider)
+                    }
+                }
                 .sheet(isPresented: $scanProvider.showSheet) {
                     ScanSheetView(scanProvider: scanProvider, showToast: $showToast, showWebView: $showWebView, webViewURL: $webViewURL)
+                    
                 }
                 .sheet(isPresented: $showWebView) {
                     if let url = webViewURL {
                         ZStack {
-                            WebView(url: url, error: $webViewError, isLoading: $isWebLoading)
-                            if isWebLoading {
-                                ProgressView("Loading...")
-                                    .progressViewStyle(CircularProgressViewStyle())
-                                    .scaleEffect(2)
-                            }
+                            WebModel(url: url)
                         }
                     }
                 }
-                .background(Color("BackgroundColor"))
-                .alert(item: $webViewError) { error in
+                .alert(isPresented: .constant(!isURLValid)) {
                     Alert(
                         title: Text("Error"),
-                        message: Text(error.message),
+                        message: Text("The URL is invalid"),
                         dismissButton: .default(Text("OK"), action: {
-                            webViewError = nil
+                            isURLValid = true
                         })
                     )
-        }
-        .ignoresSafeArea(.container)
-        
-        
-        if showToast {
-            ToastView(message: "Text copied to clipboard")
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        withAnimation {
-                            showToast = false
-                        }
-                    }
                 }
+                .ignoresSafeArea(.container)
+                
+                
+                if showToast {
+                    ToastView(message: "Text copied to clipboard")
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    showToast = false
+                                }
+                            }
+                        }
+                }
+            } else {
+                AuthorizationView()
+            }
+        }
+        .onAppear {
+            checkCameraAccess()
+        }
+    }
+    private func checkCameraAccess() {
+        switch AVCaptureDevice.authorizationStatus(for: .video) {
+        case .authorized:
+            cameraAccessGranted = true
+            
+        case .notDetermined:
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                DispatchQueue.main.async {
+                    cameraAccessGranted = granted
+                }
+            }
+            
+        default:
+            cameraAccessGranted = false
         }
     }
 }
-
-
 
 #Preview {
     HomeView()

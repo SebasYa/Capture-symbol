@@ -12,7 +12,6 @@
 		DB44A38A2C3866A70041F5F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB44A3892C3866A70041F5F5 /* Preview Assets.xcassets */; };
 		DB44A3A32C3868880041F5F5 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3A22C3868880041F5F5 /* WebView.swift */; };
 		DB44A3AB2C38692A0041F5F5 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3AA2C38692A0041F5F5 /* ToastView.swift */; };
-		DB44A3AF2C3869560041F5F5 /* WebViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3AE2C3869560041F5F5 /* WebViewError.swift */; };
 		DB44A3B32C3869910041F5F5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B22C3869910041F5F5 /* HomeView.swift */; };
 		DB44A3B52C3869C30041F5F5 /* ScanSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B42C3869C30041F5F5 /* ScanSheetView.swift */; };
 		DB44A3B72C3869D10041F5F5 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B62C3869D10041F5F5 /* AuthorizationView.swift */; };
@@ -26,7 +25,6 @@
 		DB44A3892C3866A70041F5F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DB44A3A22C3868880041F5F5 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		DB44A3AA2C38692A0041F5F5 /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
-		DB44A3AE2C3869560041F5F5 /* WebViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewError.swift; sourceTree = "<group>"; };
 		DB44A3B22C3869910041F5F5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DB44A3B42C3869C30041F5F5 /* ScanSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanSheetView.swift; sourceTree = "<group>"; };
 		DB44A3B62C3869D10041F5F5 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 			children = (
 				DB44A3A22C3868880041F5F5 /* WebView.swift */,
 				DB44A3AA2C38692A0041F5F5 /* ToastView.swift */,
-				DB44A3AE2C3869560041F5F5 /* WebViewError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,7 +180,6 @@
 				DB44A3B92C3869E10041F5F5 /* ScanController.swift in Sources */,
 				DB44A3B32C3869910041F5F5 /* HomeView.swift in Sources */,
 				DB44A3AB2C38692A0041F5F5 /* ToastView.swift in Sources */,
-				DB44A3AF2C3869560041F5F5 /* WebViewError.swift in Sources */,
 				DB44A3832C3866A60041F5F5 /* CaptureSymbolApp.swift in Sources */,
 				DB44A3B72C3869D10041F5F5 /* AuthorizationView.swift in Sources */,
 				DB44A3A32C3868880041F5F5 /* WebView.swift in Sources */,

@@ -6,11 +6,12 @@
 //
 
 
+
 import SwiftUI
 import VisionKit
 import AVFoundation
 
-// UIViewController from UIKit to SwiftUI View
+// UIViewController from UIKit to SwiftUI
 struct ScanController: UIViewControllerRepresentable {
     
     @ObservedObject var scanProvider: ScanProvider
@@ -21,8 +22,12 @@ struct ScanController: UIViewControllerRepresentable {
                                                                   qualityLevel: .accurate,
                                                                   isHighlightingEnabled: true)
         dataScannerViewController.delegate = scanProvider
-        try? dataScannerViewController.startScanning()
-         return dataScannerViewController
+        do {
+            try dataScannerViewController.startScanning()
+        } catch {
+            print("Failed to start scanning: \(error.localizedDescription)")
+        }
+        return dataScannerViewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType,
@@ -38,6 +43,7 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     @Published var showSheet = false
     @Published var isSpeaking = false
     let synthesizer = AVSpeechSynthesizer()
+//    var captureSession: AVCaptureSession?
     
     override init() {
             super.init()
@@ -74,9 +80,9 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     func Speak() {
         let textCopy = text
         let utterance = AVSpeechUtterance(string: textCopy)
-        utterance.voice = AVSpeechSynthesisVoice(language: "es-MX")
+    //  For locall system language voice -> let preferredLanguage = Locale.preferredLanguages.first ?? "en-US"
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US" /*"es-MX"*/)
         
-        //        synthesizer.pauseSpeaking(at: .word)
         synthesizer.speak(utterance)
         isSpeaking = true
     }
@@ -93,4 +99,11 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
         isSpeaking = false
     }
     
+//    func startCamera() {
+//        captureSession?.startRunning()
+//    }
+//
+//    func stopCamera() {
+//        captureSession?.stopRunning()
+//    }
 }

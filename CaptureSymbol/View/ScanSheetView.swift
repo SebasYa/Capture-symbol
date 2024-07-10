@@ -13,17 +13,22 @@ struct ScanSheetView: View {
     @Binding var showWebView: Bool
     @Binding var webViewURL: URL?
     
+    var isValidURL: Bool {
+        if let url = URL(string: scanProvider.text), UIApplication.shared.canOpenURL(url) {
+            return true
+        }
+        return false
+    }
+    
+    
     var body: some View {
-        VStack(alignment: .leading) {
-            
             Text(scanProvider.text)
                 .font(.system(.body, design: .rounded))
-//                .foregroundStyle(Color("TextColor"))
                 .padding(.top, 20)
                 .padding(.horizontal)
             
             Spacer()
-            HStack {
+            HStack(spacing: 20) {
                 Button(action: {
                     UIPasteboard.general.string = scanProvider.text
                     showToast = true
@@ -34,26 +39,29 @@ struct ScanSheetView: View {
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .cornerRadius(8)
-            }
-                if let url = URL(string: scanProvider.text), UIApplication.shared.canOpenURL(url) {
-                    Button(action: {
+                }
+                Button(action: {
+                    if isValidURL {
                         scanProvider.showSheet = false
                         DispatchQueue.main.async {
-                            webViewURL = url
+                            webViewURL = URL(string: scanProvider.text)
                             showWebView = true
                         }
-                    }) {
+                    }
+                }) {
                         Text("Open URL")
                             .font(.system(.body, design: .rounded))
                             .padding()
-                            .background(Color("PersonalGreenColor"))
+                            .background(isValidURL ? Color("PersonalGreenColor") : Color("PersonalGrayColor"))
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
+                .disabled(!isValidURL)
                 }
-            }
-            .padding()
-            HStack {
+            .padding(.trailing, 30)
+
+    
+            HStack(spacing: 20) {
                 Button(action: scanProvider.Speak, label: {
                     Label("Play", systemImage: scanProvider.isSpeaking ? "play.fill" : "play")
                         .font(.system(.body, design: .rounded))
@@ -72,17 +80,19 @@ struct ScanSheetView: View {
                         .cornerRadius(8)
                 })
             }
-            .padding()
+            .padding(.trailing, 115)
             
             Spacer()
-        }
-        .padding()
-        .presentationDragIndicator(.visible)
-        .presentationDetents([.medium, .large ])
-        .background(Color("BackgroundColor"))
+        
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.medium, .large ])
     }
 }
 
 #Preview {
-    ScanSheetView(scanProvider: ScanProvider(), showToast: .constant(false), showWebView: .constant(false), webViewURL: .constant(nil))
+    ScanSheetView(scanProvider: ScanProvider(),
+                  showToast: .constant(false),
+                  showWebView: .constant(false),
+                  webViewURL: .constant(nil)
+    )
 }
