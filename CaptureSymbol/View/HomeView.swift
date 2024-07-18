@@ -1,8 +1,9 @@
 //
 //  HomeView.swift
 //  CaptureSymbol
+//  Copyright © 2024 The SY Repository. All rights reserved.
 //
-//  Created by Sebastian Yanni on 05/07/2024.
+//  Created by Sebastián Yanni.
 //
 
 import SwiftUI
@@ -13,58 +14,75 @@ struct HomeView: View {
     @State private var showToast = false
     @State private var showWebView = false
     @State private var webViewURL: URL?
-    @State private var isURLValid = true
     @State private var cameraAccessGranted = false
-    
+
     var body: some View {
-        Group {
-            if cameraAccessGranted {
-                ZStack {
-                    if !scanProvider.showSheet && !showWebView {
-                        ScanController(scanProvider: scanProvider)
-                    }
-                }
-                .sheet(isPresented: $scanProvider.showSheet) {
-                    ScanSheetView(scanProvider: scanProvider, showToast: $showToast, showWebView: $showWebView, webViewURL: $webViewURL)
-                    
-                }
-                .sheet(isPresented: $showWebView) {
-                    if let url = webViewURL {
-                        ZStack {
-                            WebModel(url: url)
+        ZStack {
+            Color.black
+            Group {
+                if cameraAccessGranted {
+                    ZStack {
+                        if !scanProvider.showSheet && !showWebView {
+                            ScanController(scanProvider: scanProvider)
+                                .onAppear(perform: {
+                                    scanProvider.stopSpeaking()
+                                    scanProvider.startScanning()
+                                })
+                                .onDisappear {
+                                    scanProvider.stopCamera()
+                                }
+                        } else {
+                            CameraPausedView()
+                                .onAppear(perform: {
+                                    scanProvider.stopCamera()
+                                })
                         }
                     }
-                }
-                .alert(isPresented: .constant(!isURLValid)) {
-                    Alert(
-                        title: Text("Error"),
-                        message: Text("The URL is invalid"),
-                        dismissButton: .default(Text("OK"), action: {
-                            isURLValid = true
-                        })
-                    )
-                }
-                .ignoresSafeArea(.container)
-                
-                
-                if showToast {
-                    ToastView(message: "Text copied to clipboard")
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                withAnimation {
-                                    showToast = false
-                                }
+                    .sheet(isPresented: $scanProvider.showSheet, onDismiss: {
+                        //                    scanProvider.clearFrozenFrame()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            scanProvider.startScanning()
+                        }
+                    }) {
+                        ScanSheetView(scanProvider: scanProvider, showToast: $showToast, showWebView: $showWebView, webViewURL: $webViewURL)
+                    }
+                    .sheet(isPresented: $showWebView, onDismiss: {
+                        //                    scanProvider.clearFrozenFrame()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            scanProvider.startScanning()
+                        }
+                    }) {
+                        if let url = webViewURL {
+                            ZStack {
+                                WebModel(url: url)
+                                
                             }
                         }
+                    }
+                    .ignoresSafeArea(.container)
+                    
+                    if showToast {
+                        ToastView(message: "Text copied to clipboard")
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                    withAnimation {
+                                        showToast = false
+                                    }
+                                }
+                            }
+                    }
+                } else {
+                    AuthorizationView()
                 }
-            } else {
-                AuthorizationView()
+            }
+            .ignoresSafeArea()
+            .onAppear {
+                checkCameraAccess()
             }
         }
-        .onAppear {
-            checkCameraAccess()
-        }
+        .ignoresSafeArea()
     }
+    
     private func checkCameraAccess() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:

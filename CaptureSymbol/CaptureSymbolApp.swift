@@ -1,8 +1,9 @@
 //
 //  CaptureSymbolApp.swift
 //  CaptureSymbol
+//  Copyright © 2024 The SY Repository. All rights reserved.
 //
-//  Created by Sebastian Yanni on 05/07/2024.
+//  Created by Sebastián Yanni.
 //
 
 import SwiftUI

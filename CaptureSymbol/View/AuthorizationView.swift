@@ -1,8 +1,9 @@
 //
 //  AuthorizationView.swift
 //  CaptureSymbol
+//  Copyright © 2024 The SY Repository. All rights reserved.
 //
-//  Created by Sebastian Yanni on 05/07/2024.
+//  Created by Sebastián Yanni.
 //
 
 
@@ -10,23 +11,28 @@ import SwiftUI
 
 struct AuthorizationView: View {
     var body: some View {
-        VStack {
-            Text("Please allow camera access to scan text or QR.")
-                .font(.system(.body, design: .rounded))
-                .padding(.top)
-            Button(action: {
-                UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
-            }) {
-                Text("Go to Settings")
+        ZStack {
+            Color.black
+            VStack {
+                Text("Please allow camera access to scan text or QR.")
                     .font(.system(.body, design: .rounded))
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(8)
+                    .foregroundStyle(.white)
+                    .padding(.top)
+                Button(action: {
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }) {
+                    Text("Go to Settings")
+                        .font(.system(.body, design: .rounded))
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding()
             }
             .padding()
         }
-        .padding()
+        .ignoresSafeArea()
     }
 }
 

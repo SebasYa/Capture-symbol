@@ -1,8 +1,9 @@
 //
 //  ScanController.swift
 //  CaptureSymbol
+//  Copyright © 2024 The SY Repository. All rights reserved.
 //
-//  Created by Sebastian Yanni on 05/07/2024.
+//  Created by Sebastián Yanni.
 //
 
 
@@ -11,7 +12,8 @@ import SwiftUI
 import VisionKit
 import AVFoundation
 
-// UIViewController from UIKit to SwiftUI
+
+// MARK: - UIViewController from UIKit to SwiftUI
 struct ScanController: UIViewControllerRepresentable {
     
     @ObservedObject var scanProvider: ScanProvider
@@ -22,6 +24,7 @@ struct ScanController: UIViewControllerRepresentable {
                                                                   qualityLevel: .accurate,
                                                                   isHighlightingEnabled: true)
         dataScannerViewController.delegate = scanProvider
+        
         do {
             try dataScannerViewController.startScanning()
         } catch {
@@ -35,20 +38,21 @@ struct ScanController: UIViewControllerRepresentable {
     
 }
 
-// Info Delegate
-final class ScanProvider: NSObject, DataScannerViewControllerDelegate, ObservableObject, AVSpeechSynthesizerDelegate  {
+// MARK: - Info Delegate
+final class ScanProvider: NSObject, DataScannerViewControllerDelegate, ObservableObject, AVSpeechSynthesizerDelegate, AVCaptureVideoDataOutputSampleBufferDelegate  {
     
     @Published var text: String = ""
     @Published var error: DataScannerViewController.ScanningUnavailable?
     @Published var showSheet = false
     @Published var isSpeaking = false
+    var dataScannerViewController: DataScannerViewController?
     let synthesizer = AVSpeechSynthesizer()
-//    var captureSession: AVCaptureSession?
+
     
     override init() {
-            super.init()
-            synthesizer.delegate = self
-        }
+        super.init()
+        synthesizer.delegate = self
+    }
     
     // Will execute when tap on screen
     func dataScanner(_ dataScanner: DataScannerViewController, didTapOn item: RecognizedItem) {
@@ -56,14 +60,18 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
         switch item {
             // recognize Text
         case .text(let recognizedText):
-            self.text = recognizedText.transcript
-            self.showSheet.toggle()
+            DispatchQueue.main.async {
+                self.text = recognizedText.transcript
+                self.showSheet.toggle()
+            }
             print("Recognized text: \(recognizedText.transcript)")
             
             // Recognize barcode or QR code
         case .barcode(let recognizedBarcode):
-            self.text = recognizedBarcode.payloadStringValue ?? ""
-            self.showSheet.toggle()
+            DispatchQueue.main.async {
+                self.text = recognizedBarcode.payloadStringValue ?? ""
+                self.showSheet.toggle()
+            }
             print("Recognized barcode: \(recognizedBarcode.payloadStringValue ?? "")")
             
         @unknown default:
@@ -73,9 +81,13 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     
     func dataScanner(_ dataScanner: DataScannerViewController,
                      becameUnavailableWithError error: DataScannerViewController.ScanningUnavailable) {
-        self.error = error
+        DispatchQueue.main.async {
+            self.error = error
+        }
         print("Data scanner became unavailable: \(error.localizedDescription)")
     }
+    
+    // MARK: - Voice Lecture
     
     func Speak() {
         let textCopy = text
@@ -88,7 +100,7 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     }
     
     func stopSpeaking () {
-        synthesizer.stopSpeaking(at: .immediate)
+        synthesizer.stopSpeaking(at: .word)
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
@@ -98,12 +110,20 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         isSpeaking = false
     }
+
+    // MARK: - Camera
     
-//    func startCamera() {
-//        captureSession?.startRunning()
-//    }
-//
-//    func stopCamera() {
-//        captureSession?.stopRunning()
-//    }
+    func stopCamera() {
+        DispatchQueue.main.async {
+            self.dataScannerViewController?.stopScanning()
+        }
+    }
+    
+    func startScanning() {
+        do {
+            try dataScannerViewController?.startScanning()
+        } catch {
+            print("Failed to start scanning: \(error.localizedDescription)")
+        }
+    }
 }
