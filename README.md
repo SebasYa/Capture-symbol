@@ -1,7 +1,7 @@
 # Capture Symbol
 
 <div align="center">
-<img src="https://github.com/SebasYa/Capture-symbol/blob/main/CaptureSymbol/Assets.xcassets/AppIcon.appiconset/1024.png?raw=true" alt="App Icon" width="300">
+<img src="https://github.com/SebasYa/Capture-symbol/blob/main/CaptureSymbol/Assets.xcassets/AppIcon.appiconset/appstore.png" alt="App Icon" width="300">
 </div>
 
 - ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
