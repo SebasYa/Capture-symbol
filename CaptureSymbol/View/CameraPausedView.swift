@@ -11,7 +11,7 @@ import SwiftUI
 struct CameraPausedView: View {
     var body: some View {
         ZStack {
-            Color("ColorNewGray")
+            Color(String("ColorNewGray"))
             VStack {
                 Text("Camera is Now Paused")
                     .foregroundStyle(.blue)
@@ -19,6 +19,7 @@ struct CameraPausedView: View {
                     .padding(.top, 200)
                 Text("Swipe down the sheet to reactive the camera")
                     .foregroundStyle(.orange)
+                    .multilineTextAlignment(.center)
                     .padding()
                 Spacer()
                 
@@ -28,6 +29,12 @@ struct CameraPausedView: View {
     }
 }
 
-#Preview {
+#Preview("English"){
     CameraPausedView()
+        .environment(\.locale, Locale(identifier: "EN"))
+}
+
+#Preview("Español"){
+    CameraPausedView()
+        .environment(\.locale, Locale(identifier: "ES"))
 }

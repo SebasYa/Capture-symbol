@@ -16,6 +16,7 @@ struct AuthorizationView: View {
             VStack {
                 Text("Please allow camera access to scan text or QR.")
                     .font(.system(.body, design: .rounded))
+                    .multilineTextAlignment(.center)
                     .foregroundStyle(.white)
                     .padding(.top)
                 Button(action: {
@@ -36,6 +37,13 @@ struct AuthorizationView: View {
     }
 }
 
-#Preview {
+#Preview("English") {
     AuthorizationView()
+        .environment(\.locale, Locale(identifier: "EN"))
 }
+
+#Preview("Español") {
+    AuthorizationView()
+        .environment(\.locale, Locale(identifier: "ES"))
+}
+

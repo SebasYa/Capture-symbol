@@ -18,6 +18,8 @@
 		DB44A3B92C3869E10041F5F5 /* ScanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3B82C3869E10041F5F5 /* ScanController.swift */; };
 		DB44A3DF2C3F2C590041F5F5 /* CameraPausedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB44A3DE2C3F2C590041F5F5 /* CameraPausedView.swift */; };
 		DB44A3E12C3FC0520041F5F5 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB44A3E02C3FC0520041F5F5 /* Launch Screen.storyboard */; };
+		DB4A54772C4B04B000C70286 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DB4A54762C4B04B000C70286 /* Localizable.xcstrings */; };
+		DB4A54792C4B0EC000C70286 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = DB4A54782C4B0EC000C70286 /* InfoPlist.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		DB44A3B82C3869E10041F5F5 /* ScanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanController.swift; sourceTree = "<group>"; };
 		DB44A3DE2C3F2C590041F5F5 /* CameraPausedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPausedView.swift; sourceTree = "<group>"; };
 		DB44A3E02C3FC0520041F5F5 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		DB4A54762C4B04B000C70286 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		DB4A54782C4B0EC000C70286 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,8 @@
 			children = (
 				DB44A3822C3866A60041F5F5 /* CaptureSymbolApp.swift */,
 				DB44A3E02C3FC0520041F5F5 /* Launch Screen.storyboard */,
+				DB4A54762C4B04B000C70286 /* Localizable.xcstrings */,
+				DB4A54782C4B0EC000C70286 /* InfoPlist.xcstrings */,
 				DB44A3922C3866DC0041F5F5 /* Model */,
 				DB44A3912C3866D70041F5F5 /* View */,
 				DB44A3902C3866C00041F5F5 /* Controller */,
@@ -154,6 +160,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = DB44A3762C3866A60041F5F5;
 			productRefGroup = DB44A3802C3866A60041F5F5 /* Products */;
@@ -171,7 +178,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB44A3E12C3FC0520041F5F5 /* Launch Screen.storyboard in Resources */,
+				DB4A54792C4B0EC000C70286 /* InfoPlist.xcstrings in Resources */,
 				DB44A38A2C3866A70041F5F5 /* Preview Assets.xcassets in Resources */,
+				DB4A54772C4B04B000C70286 /* Localizable.xcstrings in Resources */,
 				DB44A3872C3866A70041F5F5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +258,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -306,7 +315,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

@@ -42,6 +42,7 @@ struct ScanSheetView: View {
                     .foregroundColor(.white)
                     .cornerRadius(8)
             }
+            .padding(.trailing)
             Button(action: {
                 if isValidURL {
                     scanProvider.showSheet = false
@@ -54,35 +55,42 @@ struct ScanSheetView: View {
                 Text("Open URL")
                     .font(.system(.body, design: .rounded))
                     .padding()
-                    .background(isValidURL ? Color("PersonalGreenColor") : Color("PersonalGrayColor"))
+                    .background(isValidURL ? Color(String("PersonalGreenColor")) : Color(String("PersonalGrayColor"))
+                    )
                     .foregroundColor(.white)
                     .cornerRadius(8)
             }
             .disabled(!isValidURL)
+            .padding(.trailing, 30)
         }
-        .padding()
+        .padding(.top)
+        .padding(.bottom)
         
         
         HStack(spacing: 20) {
             Button(action: scanProvider.Speak, label: {
-                Label("Play", systemImage: scanProvider.isSpeaking ? "play.fill" : "play")
+                Label(String("Play"), systemImage: scanProvider.isSpeaking ? String("play.fill") : String("play")
+                      )
                     .font(.system(.body, design: .rounded))
                     .padding()
-                    .background(scanProvider.isSpeaking ? Color("PersonalGrayColor") : Color("PersonalGreenColor"))
+                    .background(scanProvider.isSpeaking ? Color(String("PersonalGrayColor")) : Color(String("PersonalGreenColor"))
+                                )
                     .foregroundStyle(.white)
                     .cornerRadius(8)
             })
-            .padding(.trailing)
+            .padding(.leading, 50)
             .disabled(scanProvider.isSpeaking)
             Button(action: scanProvider.stopSpeaking, label: {
-                Label("Stop", systemImage: "stop.circle.fill")
+                Label(String("Stop"), systemImage: String("stop.circle.fill")
+                      )
                     .font(.system(.body, design: .rounded))
                     .padding()
                     .background(.tertiary)
-                    .foregroundStyle(Color("ColorBW"))
+                    .foregroundStyle(Color(String("ColorBW"))
+                                     )
                     .cornerRadius(8)
             })
-            .padding(.trailing)
+            .padding(.leading, 40)
         }
         .padding(.trailing, 50)
         .presentationDragIndicator(.visible)
@@ -90,10 +98,20 @@ struct ScanSheetView: View {
     }
 }
 
-#Preview {
+#Preview("English") {
     ScanSheetView(scanProvider: ScanProvider(),
                   showToast: .constant(false),
                   showWebView: .constant(false),
                   webViewURL: .constant(nil)
     )
+    .environment(\.locale, Locale(identifier: "EN"))
+}
+
+#Preview("Spanish") {
+    ScanSheetView(scanProvider: ScanProvider(),
+                  showToast: .constant(false),
+                  showWebView: .constant(false),
+                  webViewURL: .constant(nil)
+    )
+    .environment(\.locale, Locale(identifier: "ES"))
 }

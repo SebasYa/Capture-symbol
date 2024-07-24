@@ -1,0 +1,66 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Camera is Now Paused" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La Cámara Está Detenida"
+          }
+        }
+      }
+    },
+    "Copy to Clipboard" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copiar Texto"
+          }
+        }
+      }
+    },
+    "Go to Settings" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acceder a Configuración"
+          }
+        }
+      }
+    },
+    "Open URL" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir URL"
+          }
+        }
+      }
+    },
+    "Please allow camera access to scan text or QR." : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, permite el acceso a la cámara para escanear textos o códigos QR."
+          }
+        }
+      }
+    },
+    "Swipe down the sheet to reactive the camera" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desliza hacia abajo la ventana para reactivar la cámara"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
