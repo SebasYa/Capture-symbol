@@ -4,10 +4,10 @@
 <img src="https://github.com/SebasYa/Capture-symbol/blob/main/CaptureSymbol/Assets.xcassets/AppIcon.appiconset/appstore.png" alt="App Icon" width="300">
 </div>
 
-- ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-- ![SwiftUI](https://img.shields.io/badge/SwiftUI-000000?style=for-the-badge&logo=swift&logoColor=white)
-- ![Xcode](https://img.shields.io/badge/Xcode-1575F9?style=for-the-badge&logo=xcode&logoColor=white)
-- ![AVFoundation](https://img.shields.io/badge/AVFoundation-000000?style=for-the-badge&logo=apple&logoColor=white)
+- ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white&style=flat)
+- ![SwiftUI](https://img.shields.io/badge/SwiftUI-000000?style=for-the-badge&logo=swift&logoColor=white&style=flat)
+- ![Xcode](https://img.shields.io/badge/Xcode-1575F9?style=for-the-badge&logo=xcode&logoColor=white&style=flat)
+- ![AVFoundation](https://img.shields.io/badge/AVFoundation-000000?style=for-the-badge&logo=apple&logoColor=white&style=flat)
   
 ## Description
 
