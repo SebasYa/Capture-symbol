@@ -13,6 +13,9 @@
 
 Capture Symbol is an iOS application designed to recognize and capture text and QR/barcodes using the device's camera. The app provides a seamless experience for scanning and processing various symbols, enhancing productivity and efficiency.
 
+<img src="https://github.com/SebasYa/Capture-symbol/blob/main/Symbol1Gif.gif" alt="App Demo" width="250"/>  <img src="https://github.com/SebasYa/Capture-symbol/blob/main/Symbol2Gif.gif" alt="App Demo" width="250"/>
+
+
 ## Features
 
 - **Text Recognition**: Capture and recognize text using the device camera.
