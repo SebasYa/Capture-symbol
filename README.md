@@ -8,6 +8,9 @@
 - ![SwiftUI](https://img.shields.io/badge/SwiftUI-000000?style=for-the-badge&logo=swift&logoColor=white&style=flat)
 - ![Xcode](https://img.shields.io/badge/Xcode-1575F9?style=for-the-badge&logo=xcode&logoColor=white&style=flat)
 - ![AVFoundation](https://img.shields.io/badge/AVFoundation-000000?style=for-the-badge&logo=apple&logoColor=white&style=flat)
+- ![VisionKit](https://img.shields.io/badge/VisionKit-000000?style=for-the-badge&logo=apple&logoColor=white&style=flat)
+- ![SafariServices](https://img.shields.io/badge/SafariServices-000000?style=for-the-badge&logo=safari&logoColor=white&style=flat)
+
   
 ## Description
 
@@ -35,11 +38,8 @@ Capture Symbol is an iOS application designed to recognize and capture text and 
 2. **Open the project in Xcode**:
     - Navigate to the cloned project directory and open `CaptureSymbol.xcodeproj`.
 
-3. **Install dependencies**:
-    - Make sure all necessary dependencies are installed and up-to-date.
-
-4. **Run the application**:
-    - Select your target device and run the application.
+3. **Run the application**:
+    - Select your target device and run the application. Should be run on a physical device.
 
 ## Usage
 
