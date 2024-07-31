@@ -11,6 +11,7 @@
 import SwiftUI
 import VisionKit
 import AVFoundation
+import NaturalLanguage
 
 
 // MARK: - UIViewController from UIKit to SwiftUI
@@ -92,11 +93,26 @@ final class ScanProvider: NSObject, DataScannerViewControllerDelegate, Observabl
     func Speak() {
         let textCopy = text
         let utterance = AVSpeechUtterance(string: textCopy)
-    //  For locall system language voice -> let preferredLanguage = Locale.preferredLanguages.first ?? "en-US"
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US" /*"es-MX"*/)
+        var detectedLanguage = detectLanguage(for: textCopy)
+        
+        if detectedLanguage.starts(with: "es") {
+            detectedLanguage = "es-MX"
+        }
+        utterance.voice = AVSpeechSynthesisVoice(language: detectedLanguage)
         
         synthesizer.speak(utterance)
         isSpeaking = true
+    }
+    
+    func detectLanguage(for text: String) -> String {
+        let recognizer = NLLanguageRecognizer()
+        recognizer.processString(text)
+        
+        if let languageCode = recognizer.dominantLanguage?.rawValue {
+            return languageCode
+        } else {
+            return Locale.preferredLanguages.first ?? "en-US" // Default language
+        }
     }
     
     func stopSpeaking () {
