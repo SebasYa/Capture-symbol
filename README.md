@@ -10,7 +10,7 @@
 - ![AVFoundation](https://img.shields.io/badge/AVFoundation-000000?style=for-the-badge&logo=apple&logoColor=white&style=flat)
 - ![VisionKit](https://img.shields.io/badge/VisionKit-000000?style=for-the-badge&logo=apple&logoColor=white&style=flat)
 - ![SafariServices](https://img.shields.io/badge/SafariServices-000000?style=for-the-badge&logo=safari&logoColor=white&style=flat)
-
+- ![Core ML](https://img.shields.io/badge/Core%20ML-blue?style=for-the-badge&logo=apple&logoColor=white&style=flat)
   
 ## Description
 
